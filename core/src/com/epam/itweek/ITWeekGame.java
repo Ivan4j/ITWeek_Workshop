@@ -35,7 +35,7 @@ public class ITWeekGame extends Game {
 
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-		this.setScreen(new ScreenExercise07());
+		this.setScreen(new ScreenExercise00());
 
 	}
 
