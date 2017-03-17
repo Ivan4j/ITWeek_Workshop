@@ -3,16 +3,14 @@ package com.epam.itweek.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.epam.itweek.ITWeekGame;
 import com.epam.itweek.controller.UIController;
 import com.epam.itweek.ui.Button;
-import com.epam.itweek.utils.Constants;
 
 /**
+ *
  * Created by Ivan_Hernandez on 3/16/2017.
  */
 

@@ -1,21 +1,34 @@
 package com.epam.itweek.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.epam.itweek.utils.Constants;
 
 /**
+ * Exercise #01: Background Image
+ *
  * Created by Ivan_Hernandez on 3/16/2017.
  */
 
 public class ScreenExercise01 extends AbstractScreen {
 
+    private Texture backgroundTexture;
+
+    public ScreenExercise01() {
+
+        backgroundTexture = new Texture(Gdx.files.internal("img/background_low_poly.png"));
+
+    }
+
     @Override
     public void render() {
 
-        // Color to clear the screen
-        //Use float values between 0 and 1
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        spriteBatch.begin();
+
+            //Draw a white image as background
+            spriteBatch.draw(backgroundTexture, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
+        spriteBatch.end();
 
     }
 

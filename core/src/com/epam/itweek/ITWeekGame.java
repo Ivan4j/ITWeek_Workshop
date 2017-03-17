@@ -1,6 +1,5 @@
 package com.epam.itweek;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -11,7 +10,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.epam.itweek.screen.ScreenExercise00;
 import com.epam.itweek.screen.ScreenExercise01;
+import com.epam.itweek.screen.ScreenExercise02;
 import com.epam.itweek.utils.Constants;
 import com.epam.itweek.utils.SpriteAccessor;
 
@@ -25,12 +26,9 @@ public class ITWeekGame extends Game {
 	private static TweenManager tweenManager;
 	private static Viewport viewport;
 
-	Texture img;
-	
 	@Override
 	public void create () {
 
-		img = new Texture("img/Android_Robot_100.png");
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, camera);
@@ -40,7 +38,7 @@ public class ITWeekGame extends Game {
 
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-		this.setScreen(new ScreenExercise01());
+		this.setScreen(new ScreenExercise02());
 
 	}
 
@@ -69,7 +67,6 @@ public class ITWeekGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 
 	public static SpriteBatch getSpriteBatch() {
