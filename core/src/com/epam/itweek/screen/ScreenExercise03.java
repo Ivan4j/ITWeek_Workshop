@@ -6,19 +6,19 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epam.itweek.utils.Constants;
 
 /**
- * Exercise #02: Draw a game Object (Sprite)
+ * Exercise #03: Change position, scale and rotation
  *
  * Created by Ivan_Hernandez on 3/16/2017.
  */
 
-public class ScreenExercise02 extends AbstractScreen {
+public class ScreenExercise03 extends AbstractScreen {
 
     private Texture backgroundTexture;
 
     private Sprite androidSprite;
     private Texture androidTexture;
 
-    public ScreenExercise02() {
+    public ScreenExercise03() {
 
         backgroundTexture = new Texture(Gdx.files.internal("img/background_low_poly.png"));
 
@@ -38,6 +38,15 @@ public class ScreenExercise02 extends AbstractScreen {
 
             //Draw the game object
             androidSprite.draw(spriteBatch);
+
+            //Move the object to the desired position
+            androidSprite.setPosition(200, 400);
+
+            //Set a fixed angle
+            androidSprite.setRotation(45);
+
+            //Double size
+            androidSprite.setScale(2f);
 
         spriteBatch.end();
 

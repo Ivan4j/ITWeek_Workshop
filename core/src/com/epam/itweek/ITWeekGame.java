@@ -5,14 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.epam.itweek.screen.ScreenExercise00;
-import com.epam.itweek.screen.ScreenExercise01;
-import com.epam.itweek.screen.ScreenExercise02;
+import com.epam.itweek.screen.*;
 import com.epam.itweek.utils.Constants;
 import com.epam.itweek.utils.SpriteAccessor;
 
@@ -38,7 +35,7 @@ public class ITWeekGame extends Game {
 
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-		this.setScreen(new ScreenExercise02());
+		this.setScreen(new ScreenExercise07());
 
 	}
 

@@ -24,11 +24,11 @@ public interface Constants   {
 
     //Buttons images path
     String BUTTON_OK = "img/ui/button_ok.png";
-    String BUTTON_CANCEL = "img/ui/button_ok.png";
-    String BUTTON_START = "img/ui/button_ok.png";
-    String BUTTON_RESTART = "img/ui/button_ok.png";
-    String BUTTON_BACK = "img/ui/button_ok.png";
-    String BUTTON_PAUSE = "img/ui/button_ok.png";
-    String BUTTON_NONE = "img/ui/button_ok.png";
+    String BUTTON_CANCEL = "img/ui/button_back.png";
+    String BUTTON_START = "img/ui/button_start.png";
+    String BUTTON_RESTART = "img/ui/button_restart.png";
+    String BUTTON_BACK = "img/ui/button_back.png";
+    String BUTTON_PAUSE = "img/ui/button_pause.png";
+    String BUTTON_NONE = "img/ui/button_none.png";
 
 }

@@ -21,6 +21,8 @@ public class Button extends Sprite {
 
         this.type = type;
         setTexture();
+
+        setBounds(0, 0, Constants.BUTTON_SIZE_MED, Constants.BUTTON_SIZE_MED);
     }
 
     private void setTexture() {
@@ -54,6 +56,13 @@ public class Button extends Sprite {
 
         setTexture(texture);
         this.setRegion(0, 0, texture.getWidth(), texture.getHeight());
+    }
+
+    @Override
+    public void setBounds(float x, float y, float width, float height) {
+        super.setBounds(x, y, width, height);
+        this.setOrigin(width / 2, height / 2);
+
     }
 
     public void setAction(IAction action) {

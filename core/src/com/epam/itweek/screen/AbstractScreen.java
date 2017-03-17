@@ -1,11 +1,14 @@
 package com.epam.itweek.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.epam.itweek.ITWeekGame;
+import com.epam.itweek.controller.GameController;
 import com.epam.itweek.controller.UIController;
 import com.epam.itweek.ui.Button;
 
@@ -19,7 +22,11 @@ public abstract class AbstractScreen implements Screen {
     protected SpriteBatch spriteBatch;
     protected SpriteBatch uiBatch;
     protected Array<Button> uiComponents;
+
     protected UIController uiController;
+    protected GameController gameController;
+
+    protected InputMultiplexer multiplexer;
 
     public AbstractScreen() {
 
@@ -27,8 +34,14 @@ public abstract class AbstractScreen implements Screen {
         uiBatch = ITWeekGame.getSpriteBatch();
         uiComponents = new Array<Button>();
         uiController = new UIController(uiComponents);
+        gameController = new GameController(new Array<Sprite>());
 
-        Gdx.input.setInputProcessor(uiController);
+        multiplexer = new InputMultiplexer();
+
+        multiplexer.addProcessor(uiController);
+        multiplexer.addProcessor(gameController);
+
+        Gdx.input.setInputProcessor(multiplexer);
     }
 
     @Override
@@ -84,4 +97,5 @@ public abstract class AbstractScreen implements Screen {
     public void dispose() {
 
     }
+
 }

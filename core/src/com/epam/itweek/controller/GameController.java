@@ -1,6 +1,7 @@
 package com.epam.itweek.controller;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.epam.itweek.ITWeekGame;
@@ -17,80 +18,18 @@ import aurelienribon.tweenengine.equations.Back;
  * Created by Ivan_Hernandez on 3/16/2017.
  */
 
-public class UIController implements InputProcessor {
+public class GameController implements InputProcessor {
 
     Vector3 touchPoint = new Vector3();
     boolean dragging;
 
-    private Array<Button> uiCopmponents;
+    private Array<Sprite> gameObjects;
 
-    private Button uiSelected = null;
+    private Sprite spriteSelected = null;
 
-    public UIController(Array<Button> screenUIComponents) {
+    public GameController(Array<Sprite> gameObjects) {
 
-        this.uiCopmponents = screenUIComponents;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-
-        touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
-
-        dragging = true;
-
-        uiSelected = null;
-
-        for(Button ui : this.uiCopmponents) {
-            if (MathUtils.checkTouchCollision(touchPoint, ui.getBoundingRectangle())) {
-
-                uiSelected = ui;
-
-                System.out.println("Touched");
-                animateComponentIN(ui);
-
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
-        touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
-        if (dragging && uiSelected != null) {
-            for (Button ui : this.uiCopmponents) {
-                if (MathUtils.checkTouchCollision(touchPoint, ui.getBoundingRectangle())) {
-
-                    System.out.println("Touched");
-                    if(ui == uiSelected) {
-                        animateComponentOUT(ui, true);
-                        dragging = false;
-                        uiSelected = null;
-                        return true;
-                    }
-                }
-            }
-        }
-
-        if(uiSelected != null)
-            animateComponentOUT(uiSelected);
-
-        dragging = false;
-
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-
-        if (!dragging)
-            return false;
-
-        touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
-
-        return true;
+        this.gameObjects = gameObjects;
     }
 
 
@@ -110,6 +49,72 @@ public class UIController implements InputProcessor {
     }
 
     @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
+        touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
+
+        dragging = true;
+
+        spriteSelected = null;
+
+        for(Sprite s : this.gameObjects) {
+            if (MathUtils.checkTouchCollision(touchPoint, s.getBoundingRectangle())) {
+
+                spriteSelected = s;
+                animateComponentIN(s);
+                System.out.println("Sprite Touched");
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+        touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
+        if (dragging && spriteSelected != null) {
+            for (Sprite s : this.gameObjects) {
+                if (MathUtils.checkTouchCollision(touchPoint, s.getBoundingRectangle())) {
+
+                    System.out.println("Sprite Released");
+                    if(s == spriteSelected) {
+                        animateComponentOUT(s);
+                        dragging = false;
+                        spriteSelected = null;
+                        return true;
+                    }
+                }
+            }
+        }
+
+        if(spriteSelected != null)
+            animateComponentOUT(spriteSelected);
+
+        dragging = false;
+
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+
+        if(spriteSelected != null) {
+
+            touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
+
+            //TODO Add the code for dragging
+
+
+
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean mouseMoved(int screenX, int screenY) {
         return false;
     }
@@ -120,7 +125,7 @@ public class UIController implements InputProcessor {
     }
 
 
-    public void animateComponentIN(Button component) {
+    public void animateComponentIN(Sprite component) {
 
         component.setScale(1);
 
@@ -132,27 +137,23 @@ public class UIController implements InputProcessor {
         System.out.println("Animate IN");
 
     }
-    public void animateComponentOUT(final Button component) {
-        animateComponentOUT(component, false);
-    }
 
-    public void animateComponentOUT(final Button component, final boolean executeAction) {
+    public void animateComponentOUT(Sprite component) {
 
         Tween.to(component, SpriteAccessor.SCALE_XY, 0.2f)
                 .target(1f, 1f)
                 .ease(Back.INOUT)
-                .setCallback(new TweenCallback() {
-                    @Override
-                    public void onEvent(int i, BaseTween<?> baseTween) {
-                        if(executeAction)
-                            if(component instanceof Button)
-                                ((Button) component).executeAction();
-                    }
-                })
                 .start(ITWeekGame.getTweenManager());
 
         System.out.println("Animate OUT");
 
     }
 
+    public void clearGameObjectsList() {
+        this.gameObjects.clear();
+    }
+
+    public void setGameObjectsList(Array<Sprite> list) {
+        this.gameObjects = list;
+    }
 }
