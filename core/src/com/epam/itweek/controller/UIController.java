@@ -84,13 +84,13 @@ public class UIController implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-
+        /*
         if (!dragging)
             return false;
 
         touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
-
-        return true;
+        */
+        return false;
     }
 
 

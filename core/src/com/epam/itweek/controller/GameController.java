@@ -101,13 +101,15 @@ public class GameController implements InputProcessor {
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
+        if(!dragging)
+            return false;
+
         if(spriteSelected != null) {
 
             touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
 
             //TODO Add the code for dragging
-
-
+            spriteSelected.setPosition(touchPoint.x - spriteSelected.getWidth() / 2, touchPoint.y - spriteSelected.getHeight() / 2);
 
         }
 
@@ -134,8 +136,6 @@ public class GameController implements InputProcessor {
                 .ease(Back.INOUT)
                 .start(ITWeekGame.getTweenManager());
 
-        System.out.println("Animate IN");
-
     }
 
     public void animateComponentOUT(Sprite component) {
@@ -144,8 +144,6 @@ public class GameController implements InputProcessor {
                 .target(1f, 1f)
                 .ease(Back.INOUT)
                 .start(ITWeekGame.getTweenManager());
-
-        System.out.println("Animate OUT");
 
     }
 
