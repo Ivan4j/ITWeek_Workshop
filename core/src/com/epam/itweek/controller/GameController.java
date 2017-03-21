@@ -5,13 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.epam.itweek.ITWeekGame;
-import com.epam.itweek.ui.Button;
+import com.epam.itweek.model.GameObject;
 import com.epam.itweek.utils.MathUtils;
 import com.epam.itweek.utils.SpriteAccessor;
 
-import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.equations.Back;
 
 /**
@@ -106,13 +104,15 @@ public class GameController implements InputProcessor {
         if(!dragging)
             return false;
 
-        if(spriteSelected != null) {
+        if(spriteSelected != null && spriteSelected instanceof GameObject) {
 
-            touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX,screenY,0));
+            if(((GameObject)spriteSelected).isDraggable()) {
 
-            //TODO Add the code for dragging
-            spriteSelected.setPosition(touchPoint.x - spriteSelected.getWidth() / 2, touchPoint.y - spriteSelected.getHeight() / 2);
+                touchPoint = ITWeekGame.getViewport().unproject(new Vector3(screenX, screenY, 0));
 
+                //TODO Add the code for dragging
+                spriteSelected.setPosition(touchPoint.x - spriteSelected.getWidth() / 2, touchPoint.y - spriteSelected.getHeight() / 2);
+            }
         }
 
         return true;
