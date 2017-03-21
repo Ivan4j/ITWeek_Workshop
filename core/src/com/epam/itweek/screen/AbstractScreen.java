@@ -98,4 +98,11 @@ public abstract class AbstractScreen implements Screen {
 
     }
 
+    public UIController getUiController() {
+        return this.uiController;
+    }
+
+    public GameController getGameController() {
+        return this.gameController;
+    }
 }

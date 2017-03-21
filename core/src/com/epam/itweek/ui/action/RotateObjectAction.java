@@ -1,6 +1,6 @@
 package com.epam.itweek.ui.action;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.epam.itweek.model.GameObject;
 
 /**
  * Created by Ivan_Hernandez on 3/17/2017.
@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class RotateObjectAction implements IAction {
 
-    private Sprite gameObject;
+    private GameObject gameObject;
 
-    public RotateObjectAction(Sprite gameObject) {
+    public RotateObjectAction(GameObject gameObject) {
         this.gameObject = gameObject;
     }
 
@@ -18,6 +18,7 @@ public class RotateObjectAction implements IAction {
     public void execute() {
 
         //TODO Complete the code: Rotate the game object
+
 
 
     }

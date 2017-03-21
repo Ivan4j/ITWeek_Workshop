@@ -32,4 +32,9 @@ public class ScreenExercise01 extends AbstractScreen {
 
     }
 
+    @Override
+    public void dispose() {
+        backgroundTexture.dispose();
+    }
+
 }

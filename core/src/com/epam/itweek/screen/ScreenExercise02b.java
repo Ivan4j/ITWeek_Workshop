@@ -6,19 +6,19 @@ import com.epam.itweek.model.GameObject;
 import com.epam.itweek.utils.Constants;
 
 /**
- * Exercise #03: Change position, scale and rotation
+ * Exercise #02: Draw a game Object (GameObject extends Sprite)
  *
  * Created by Ivan_Hernandez on 3/16/2017.
  */
 
-public class ScreenExercise03 extends AbstractScreen {
+public class ScreenExercise02b extends AbstractScreen {
 
     private Texture backgroundTexture;
 
     private GameObject androidSprite;
     private Texture androidTexture;
 
-    public ScreenExercise03() {
+    public ScreenExercise02b() {
 
         backgroundTexture = new Texture(Gdx.files.internal("img/background_low_poly.png"));
 
@@ -39,15 +39,6 @@ public class ScreenExercise03 extends AbstractScreen {
             //Draw the game object
             androidSprite.draw(spriteBatch);
 
-            //Move the object to the desired position
-            androidSprite.setPosition(200, 400);
-
-            //Set a fixed angle
-            androidSprite.setRotation(45);
-
-            //Double size
-            androidSprite.setScale(2f);
-
         spriteBatch.end();
 
     }
@@ -57,5 +48,4 @@ public class ScreenExercise03 extends AbstractScreen {
         backgroundTexture.dispose();
         androidTexture.dispose();
     }
-
 }

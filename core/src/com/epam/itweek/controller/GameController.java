@@ -20,12 +20,14 @@ import aurelienribon.tweenengine.equations.Back;
 
 public class GameController implements InputProcessor {
 
-    Vector3 touchPoint = new Vector3();
-    boolean dragging;
+    private Vector3 touchPoint = new Vector3();
+    private boolean dragging;
 
     private Array<Sprite> gameObjects;
 
     private Sprite spriteSelected = null;
+
+    public enum GAME_STATE {INIT, GAMEPLAY, PAUSE, COMPLETED}
 
     public GameController(Array<Sprite> gameObjects) {
 
@@ -154,4 +156,5 @@ public class GameController implements InputProcessor {
     public void setGameObjectsList(Array<Sprite> list) {
         this.gameObjects = list;
     }
+
 }
