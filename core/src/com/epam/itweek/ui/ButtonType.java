@@ -5,5 +5,5 @@ package com.epam.itweek.ui;
  */
 
 public enum ButtonType {
-    OK, CANCEL, START, RESTART, PAUSE, BACK, NONE
+    OK, CANCEL, START, RESTART, PAUSE, BACK, NONE, MOVE_LEFT, MOVE_RIGHT
 }

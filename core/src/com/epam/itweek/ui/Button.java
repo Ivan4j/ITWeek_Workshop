@@ -13,6 +13,7 @@ import com.epam.itweek.utils.Constants;
 public class Button extends Sprite {
 
     private Texture texture;
+
     private ButtonType type;
 
     private IAction action;
@@ -22,7 +23,7 @@ public class Button extends Sprite {
         this.type = type;
         setTexture();
 
-        setBounds(0, 0, Constants.BUTTON_SIZE_MED, Constants.BUTTON_SIZE_MED);
+        setBounds(0, 0, Constants.BUTTON_SIZE_BIG, Constants.BUTTON_SIZE_BIG);
     }
 
     private void setTexture() {
@@ -46,6 +47,12 @@ public class Button extends Sprite {
                 break;
             case BACK:
                 texture = new Texture(Gdx.files.internal(Constants.BUTTON_BACK));
+                break;
+            case MOVE_LEFT:
+                texture = new Texture(Gdx.files.internal(Constants.BUTTON_BACK));
+                break;
+            case MOVE_RIGHT:
+                texture = new Texture(Gdx.files.internal(Constants.BUTTON_START));
                 break;
             case NONE:
                 texture = new Texture(Gdx.files.internal(Constants.BUTTON_NONE));
@@ -76,4 +83,10 @@ public class Button extends Sprite {
         } else
             System.err.println("Action NULL, please set an action to this button");
     }
+
+
+    public ButtonType getType() {
+        return type;
+    }
+
 }
